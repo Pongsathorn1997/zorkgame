@@ -1,6 +1,6 @@
 package zork.game;
 
-public class AttackObjective {
+public class AttackOb {
 
     private int damage;
     private int StunTurn;
@@ -30,8 +30,8 @@ public class AttackObjective {
             return this;
         }
 
-        public AttackObjective build(){
-            AttackObjective attackObjective = new AttackObjective();
+        public AttackOb build(){
+            AttackOb attackObjective = new AttackOb();
             attackObjective.damage = this.damage;
             attackObjective.StunTurn = this.StunTurn;
             return attackObjective;

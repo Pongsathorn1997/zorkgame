@@ -3,6 +3,7 @@ package zork.character;
 import zork.game.AttackOb;
 import zork.game.Observation;
 import zork.items.Item;
+import zork.items.itemUseInFight.RedPotion;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -36,13 +37,14 @@ public class Player extends Character{
     private static Player player = new Player();
 
     public Player(){
+        super();
         max_player_health = Current_Max_Player_Health;
         max_player_mana = Current_Max_Player_MANA;
         max_player_attack = Current_Max_Player_Attack;
         health = max_player_health;
         mana = max_player_mana;
         inventory = new HashMap<Class<? extends Item>, Integer>();
-        /////////////
+        getItem(new RedPotion());
     }
 
     public void reset(){
@@ -52,7 +54,7 @@ public class Player extends Character{
         health = max_player_health;
         mana = max_player_mana;
         inventory = new HashMap<Class<? extends Item>, Integer>();
-        /////////////
+        getItem(new RedPotion());
     }
 
     // the defend condition;
@@ -174,5 +176,86 @@ public class Player extends Character{
         return inventory.containsKey(itemType) && inventory.get(itemType) > 0;
     }
 
+    public Item retrieveItem(Class<? extends Item> itemType){
+        try{
+            Item newItem = itemType.getConstructor().newInstance();
+            if (newItem.canRunOut()) {
+                if (inventory.get(itemType) - 1 > 0){
+                    inventory.put(itemType, inventory.get(itemType)-1);
+                }else{
+                    inventory.remove(itemType);
+                }
+                size_inventory--;
+            }
+            return newItem;
+        }catch (Exception e){
+            return null;
+        }
+    }
+
+    public Observation getItem(Item item){
+        if (size_inventory < MAX_SIZE_INVENTORY){
+            Class<? extends Item> itemType = item.getClass();
+            if (inventory.containsKey(itemType)){
+                inventory.put(itemType, inventory.get(itemType)+1);
+            }else {
+                inventory.put(itemType, 1);
+            }
+            size_inventory++;
+            return new Observation("You get a " + itemType.getSimpleName()+ ".");
+        }else {
+            return new Observation("You cannot get the item, inventory is full");
+        }
+    }
+
+    public Item dropItem(Class<? extends Item> itemType){
+        try{
+            Item newItem = itemType.getConstructor().newInstance();
+            if (newItem.canRunOut()) {
+                if (inventory.get(itemType) - 1 > 0){
+                    inventory.put(itemType, inventory.get(itemType)-1);
+                }else{
+                    inventory.remove(itemType);
+                }
+                size_inventory--;
+            }
+            return newItem;
+        }catch (Exception e){
+            return null;
+        }
+    }
+
+
+    public Map<Class<? extends Item>, Integer> getInventory(){
+        return inventory;
+    }
+
+    public int getMana(){
+        return mana;
+    }
+
+    public int getMax_player_health(){
+        return max_player_health;
+    }
+
+    public int getMax_player_attack(){
+        return max_player_attack;
+    }
+
+    public int getMax_player_mana(){
+        return max_player_mana;
+    }
+
+    public void setHealth(int newHealth){
+        this.health = newHealth;
+    }
+
+    public void setMana(int newMana){
+        this.mana = newMana;
+    }
+
+    public void setMax_player_attack(int max_player_attack){
+        this.max_player_attack = max_player_attack;
+    }
 
 }

@@ -3,16 +3,13 @@ package zork.game;
 public class AttackOb {
 
     private int damage;
-    private int StunTurn;
+
 
     // get the damage
     public int getDamage(){
         return damage;
     }
-    // get the turn that sturn
-    public int getStunTurn(){
-        return StunTurn;
-    }
+
 
     public static class Builder {
 
@@ -25,15 +22,10 @@ public class AttackOb {
             return this;
         }
 
-        public Builder StunTurn(int stunTurn){
-            this.StunTurn = stunTurn;
-            return this;
-        }
 
         public AttackOb build(){
             AttackOb attackObjective = new AttackOb();
             attackObjective.damage = this.damage;
-            attackObjective.StunTurn = this.StunTurn;
             return attackObjective;
         }
 

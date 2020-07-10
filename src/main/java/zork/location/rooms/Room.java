@@ -21,7 +21,7 @@ public abstract class Room {
     public abstract boolean canWalk();
 
     public void putItem(Item item){
-        if (canWalk()){
+        if(canWalk()) {
             this.item = item;
         }
     }
@@ -40,7 +40,7 @@ public abstract class Room {
         this.monster = monster;
     }
 
-    public Monster getMonster(){
+    public Monster getMonster() {
         return monster;
     }
 
@@ -48,21 +48,20 @@ public abstract class Room {
         return monster != null;
     }
 
-    protected abstract String roomMessage();
-
-    public abstract Observation roomAction(Game game);
-
     public Observation getRoomMessage(){
         StringBuilder sb = new StringBuilder();
         if (roomMessage() != null){
             sb.append(roomMessage());
         }
         if (hasItem()){
-            sb.append("In the room, there is a ").append(item.getClass().getSimpleName());
+            sb.append("In the room there is a ").append(item.getClass().getSimpleName());
         }
-        if (sb.length() > 0){
+        if (sb.length() > 0) {
             return new Observation(sb.toString());
-        }else
-            return null;
+        } else return null;
     }
+
+    protected abstract String roomMessage();
+
+    public abstract Observation roomAction(Game game);
 }

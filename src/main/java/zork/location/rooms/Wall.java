@@ -21,6 +21,6 @@ public class Wall extends Room {
 
     @Override
     public Observation roomAction(Game game) {
-        return null;
+        return new Observation("this is a wall");
     }
 }

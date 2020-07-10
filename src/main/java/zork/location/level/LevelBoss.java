@@ -37,13 +37,13 @@ public class LevelBoss extends Level {
     }
 
     @Override
-    protected void setItems() {
+    protected void putItems() {
         levelSetup[0][1].putItem(new RedPotion());
         levelSetup[2][3].putItem(new BluePotion());
     }
 
     @Override
-    protected void setMonster() {
+    protected void putMonster() {
         levelSetup[4][3].putMonster(new Advance());
         levelSetup[6][3].putMonster(new Advance());
         levelSetup[6][0].putMonster(new Boss());

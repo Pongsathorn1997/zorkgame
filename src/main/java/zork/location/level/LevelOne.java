@@ -40,7 +40,8 @@ public class LevelOne extends Level {
     }
 
     @Override
-    protected void setItems() {
+    protected void putItems() {
+        levelSetup[0][1].putItem(new RedPotion());
         levelSetup[0][5].putItem(new RedPotion());
         levelSetup[1][2].putItem(new BluePotion());
         levelSetup[2][5].putItem(new Key());
@@ -48,7 +49,7 @@ public class LevelOne extends Level {
     }
 
     @Override
-    protected void setMonster() {
+    protected void putMonster() {
         Random random = new Random();
         for (int monsterNum = 0; monsterNum < 4; monsterNum++){
             int x,y;

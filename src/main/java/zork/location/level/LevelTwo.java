@@ -43,14 +43,14 @@ public class LevelTwo extends Level {
     }
 
     @Override
-    protected void setItems() {
+    protected void putItems() {
         levelSetup[0][3].putItem(new RedPotion());
         levelSetup[3][3].putItem(new BluePotion());
         levelSetup[4][0].putItem(new RedPotion());
     }
 
     @Override
-    protected void setMonster() {
+    protected void putMonster() {
         Random random = new Random();
         for (int monsterNum = 0; monsterNum < 4; monsterNum++){
             int x,y;

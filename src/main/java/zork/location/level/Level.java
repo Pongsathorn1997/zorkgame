@@ -19,7 +19,7 @@ public abstract class Level {
         this.x_size = x_size;
         this.y_size = y_size;
         levelSetup = new Room[x_size][y_size];
-        setRoom();
+        setLevel();
         roomVisited = new boolean[x_size][y_size];
         player = Player.getPlayer();
         player.place_player(x_size, y_size);
@@ -27,13 +27,13 @@ public abstract class Level {
     }
 
     protected abstract void setRoom();
-    protected abstract void setItems();
-    protected abstract void setMonster();
+    protected abstract void putItems();
+    protected abstract void putMonster();
 
     private void setLevel(){
         setRoom();
-        setItems();
-        setMonster();
+        putItems();
+        putMonster();
     }
 
     public abstract Observation getInitialRoomMessage();

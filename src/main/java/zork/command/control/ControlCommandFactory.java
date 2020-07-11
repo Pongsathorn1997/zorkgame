@@ -15,6 +15,7 @@ public class ControlCommandFactory extends CommandFactory {
         add(new Take());
         add(new Drop());
         add(new Use());
+        add(new Quite());
     }};
 
     @Override

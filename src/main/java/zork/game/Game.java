@@ -20,6 +20,7 @@ public class Game {
     private Input input;
     private Observer observer;
     private Scene nextScene;
+    private Scene startScene;
 
     private boolean isWon = false;
 
@@ -31,6 +32,7 @@ public class Game {
         this.input = new Input();
         this.observer = new CommandLine();
         this.nextScene = new StartScene();
+        this.startScene = new StartScene();
     }
 
     public Player getPlayer() {
@@ -109,6 +111,10 @@ public class Game {
 
     public Scene getNextScene() {
         return nextScene;
+    }
+
+    public Scene getStartScene(){
+        return startScene;
     }
 
     public void setNextScene(Scene scene){

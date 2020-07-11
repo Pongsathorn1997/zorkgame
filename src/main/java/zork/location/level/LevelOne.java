@@ -63,5 +63,5 @@ public class LevelOne extends Level {
 
     @Override
     public Observation getInitialRoomMessage() {
-        return new Observation("Welcome to the first level of this game, try to unlock the door to next stage!!");    }
+        return new Observation("> Welcome to the first level of this game, try to unlock the door to next stage!!");    }
 }

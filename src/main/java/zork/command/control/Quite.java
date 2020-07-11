@@ -1,19 +1,21 @@
-package zork.command.normal;
+package zork.command.control;
 
 import zork.command.Command;
 import zork.game.Game;
 import zork.game.Observation;
 import zork.scene.LevelScene;
+import zork.scene.StartScene;
 
-public class Start implements Command {
+public class Quite implements Command {
+
     @Override
     public Observation do_the_command(Game game) {
-        game.setNextScene(new LevelScene());
-        return new Observation("> Let! play the game");
+        game.getStartScene().playScene(game);
+        return new Observation("quite! the game");
     }
 
     @Override
     public String get_name_command() {
-        return "start";
+        return "quite";
     }
 }

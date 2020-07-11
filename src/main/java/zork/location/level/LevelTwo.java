@@ -64,7 +64,7 @@ public class LevelTwo extends Level {
 
     @Override
     public Observation getInitialRoomMessage() {
-        return new Observation("Welcome to the second level of this game, try to pass this level to next stage!!");
+        return new Observation("> Welcome to the second level of this game, try to pass this level to next stage!!");
     }
 
 }

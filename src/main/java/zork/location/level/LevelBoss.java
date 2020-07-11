@@ -52,6 +52,6 @@ public class LevelBoss extends Level {
 
     @Override
     public Observation getInitialRoomMessage() {
-        return new Observation("Where is this place?. I heard something!. It's Boss!!!");
+        return new Observation("> Where is this place?. I heard something!. It's Boss!!!");
     }
 }
